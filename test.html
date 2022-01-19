@@ -10,7 +10,7 @@ function connect() {
     filters: [
       {namePrefix: 'Pixl.js'},
     ],
-    optionalServices: [ "7b340000-105b-2b38-3a74-2932f884e90e" ]
+    optionalServices: [ "6e400001-b5a3-f393-e0a9-e50e24dcca9e" ]
   };
   var busy = false;
   var gatt, service;
@@ -21,10 +21,10 @@ function connect() {
   }).then(function(g) {
    gatt = g;
    // Get our custom service
-   return gatt.getPrimaryService("7b340000-105b-2b38-3a74-2932f884e90e");
+   return gatt.getPrimaryService("UUID 6e400002-b5a3-f393-e0a9-e50e24dcca9e");
   }).then(function(service) {
     // Get the RGB LED characteristic
-    return service.getCharacteristic("7b340001-105b-2b38-3a74-2932f884e90e");
+    return service.getCharacteristic("UUID 6e400002-b5a3-f393-e0a9-e50e24dcca9e");
   }).then(function(characteristic) {
     // Make a random color
     var rgb = new Uint8Array([
