@@ -98,7 +98,7 @@ function connect() {
     })
     .catch(error => {
         console.log('' + error);
-        window.term_.io.println('' + error);
+        //window.term_.io.println('' + error);
         if(bleDevice && bleDevice.gatt.connected)
         {
             bleDevice.gatt.disconnect();
