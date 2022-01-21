@@ -3,7 +3,7 @@
  </head>
  <body>
 <button id="clientConnectButton" onclick="connect()">Connect</button>
-<button onclick="get_date()">Get Date</button>
+<button onclick="getDate()">Get Date</button>
 <script>
 'use strict';
 
@@ -142,7 +142,7 @@ function handleNotifications(event) {
 
 function nusSendString(s) {
     if(bleDevice && bleDevice.gatt.connected) {
-        console.log("send: " + s);
+        console.log("send: " + 'DD#');
         let val_arr = new Uint8Array(s.length)
         for (let i = 0; i < s.length; i++) {
             let val = s[i].charCodeAt(0);
@@ -162,6 +162,10 @@ function sendNextChunk(a) {
               sendNextChunk(a.slice(MTU));
           }
       });
+}
+ 
+function getDate() {
+ 
 }
 
 
