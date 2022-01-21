@@ -2,13 +2,13 @@
 <body>
 <button onclick="connect()">Connect to Web Bluetooth</button>
 <script>
+const bleNusServiceUUID  = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 function connect() {
-//   var options =  {
-//     filters: [
-//       {namePrefix: 'Pixl.js'},
-//     ],
-//     optionalServices: [ "7b340000-105b-2b38-3a74-2932f884e90e" ]
-//   };
+  var options =  {
+   //filters: [{services: []}]
+        optionalServices: [bleNusServiceUUID],
+        acceptAllDevices: true
+  };
   var busy = false;
   var gatt, service;
   // Bring up the Web Bluetooth Device Chooser
