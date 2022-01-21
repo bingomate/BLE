@@ -12,7 +12,7 @@ function connect() {
   var busy = false;
   var gatt, service;
   // Bring up the Web Bluetooth Device Chooser
-  navigator.bluetooth.requestDevice(options).then(function(device) {
+  navigator.bluetooth.requestDevice().then(function(device) {
     console.log('Device: ' + JSON.stringify(device));
     return device.gatt.connect();
   }).then(function(g) {
