@@ -22,6 +22,7 @@ function connect() {
   }).then(function(service) {
     // Get the RGB LED characteristic
     return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+    
   }).then(function(characteristic) {
     // Make a random color
     var rgb = new Uint8Array([
@@ -35,10 +36,12 @@ function connect() {
   }).then(function() {
     //gatt.disconnect();
     console.log("All Done!");
-  }).then(function(get_notifications) {
+ 
   }).catch(function(error) {
     console.log("Something went wrong. " + error);
   });
+	
+  get_notification();
 }
 	
 function get_notifications() {
