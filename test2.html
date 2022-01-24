@@ -43,7 +43,7 @@ function connect() {
     // Now start getting notifications
     return characteristic.startNotifications();
   }).then(function() {
-    //gatt.disconnect();
+    gatt.disconnect();
     console.log("All Done!");
  
   }).catch(function(error) {
