@@ -34,6 +34,14 @@ function connect() {
    // var rgb = "\u0044\u0044\u0023"
     // Write it to the characteristic
     return characteristic.writeValue(rgb);
+     var dataDiv = document.querySelector("#data");
+    // When we get a notification, write the data to a div below the button
+    characteristic.addEventListener('characteristicvaluechanged', function(event) {
+      var value = event.target.value.buffer; // an arraybuffer
+      dataDiv.textContent = (new Int8Array(value)).toString();
+    });
+    // Now start getting notifications
+    return characteristic.startNotifications();
   }).then(function() {
     //gatt.disconnect();
     console.log("All Done!");
@@ -42,14 +50,14 @@ function connect() {
     console.log("Something went wrong. " + error);
   });
 	
-   var dataDiv = document.querySelector("#data");
-    // When we get a notification, write the data to a div below the button
-    characteristic.addEventListener('characteristicvaluechanged', function(event) {
-      var value = event.target.value.buffer; // an arraybuffer
-      dataDiv.textContent = (new Int8Array(value)).toString();
-    });
-    // Now start getting notifications
-    return characteristic.startNotifications();
+//    var dataDiv = document.querySelector("#data");
+//     // When we get a notification, write the data to a div below the button
+//     characteristic.addEventListener('characteristicvaluechanged', function(event) {
+//       var value = event.target.value.buffer; // an arraybuffer
+//       dataDiv.textContent = (new Int8Array(value)).toString();
+//     });
+//     // Now start getting notifications
+//     return characteristic.startNotifications();
 }
 	
 // function get_notifications() {
