@@ -35,7 +35,7 @@ function connect() {
   }).then(function() {
     //gatt.disconnect();
     console.log("All Done!");
-  }).then(get_notifications);
+  }).then(function(get_notifications) {
   }).catch(function(error) {
     console.log("Something went wrong. " + error);
   });
