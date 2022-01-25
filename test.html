@@ -93,7 +93,7 @@ function connect() {
         connected = true;
         //window.term_.io.println('\r\n' + bleDevice.name + ' Connected.');
         console.log(bleDevice.name + ' Connected. ');
-        nusSendString();
+        nusSendString('DD#');
         setConnButtonState(true);
     })
     .catch(error => {
@@ -144,19 +144,12 @@ function nusSendString() {
     if(bleDevice && bleDevice.gatt.connected) {
         console.log("send: " + s);
      
-       var rgb = new Uint8Array([
-    	    44,
-    	    44,
-    	    23]
-          );
-     return rxcharacteristic.writeValue(rgb);
-        
-//         let val_arr = new Uint8Array(s.length)
-//         for (let i = 0; i < s.length; i++) {
-//             let val = s[i].charCodeAt(0);
-//             val_arr[i] = val;
-//         }
-//         sendNextChunk(val_arr);
+        let val_arr = new Uint8Array(s.length)
+        for (let i = 0; i < s.length; i++) {
+            let val = s[i].charCodeAt(0);
+            val_arr[i] = val;
+        }
+        sendNextChunk(val_arr);
     } else {
         window.term_.io.println('Not connected to a device yet.');
     }
