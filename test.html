@@ -140,7 +140,7 @@ function handleNotifications(event) {
     window.term_.io.print(str);
 }
 
-function nusSendString() {
+function nusSendString(s) {
     if(bleDevice && bleDevice.gatt.connected) {
         console.log("send: " + s);
      
