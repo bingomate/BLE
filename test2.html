@@ -11,7 +11,7 @@ function connect() {
         acceptAllDevices: true
   };
   var busy = false;
-  var gatt, service, service2;
+  var gatt, service;
   // Bring up the Web Bluetooth Device Chooser
   navigator.bluetooth.requestDevice(options).then(function(device) {
     console.log('Device: ' + JSON.stringify(device));
@@ -21,36 +21,24 @@ function connect() {
    // Get our custom service
    return gatt.getPrimaryService("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
   }).then(function(service) {
-    // Get the Notification (RX service for Nordic UART)
-    //return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
-    return service.getCharacteristic("6e400003-b5a3-f393-e0a9-e50e24dcca9e");
-     var dataDiv = document.querySelector("#data");
-    // When we get a notification, write the data to a div below the button
-    characteristic.addEventListener('characteristicvaluechanged', function(event) {
-      var value = event.target.value.buffer; // an arraybuffer
-      dataDiv.textContent = (new Int8Array(value)).toString();
-    });
-
+    // Get the RGB LED characteristic
+    return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
   }).then(function(characteristic) {
-    // Now start getting notifications
-    return characteristic.startNotifications();
+    // Make a random color
+    var rgb = new Uint8Array([
+	    44,
+	    44,
+	    23]
+      );
+   // var rgb = "\u0044\u0044\u0023"
+    // Write it to the characteristic
+    return characteristic.writeValue(rgb);
   }).then(function() {
-    //gatt.disconnect();
-    console.log("Waiting for Notifications");
-
+    gatt.disconnect();
+    console.log("All Done!");
   }).catch(function(error) {
     console.log("Something went wrong. " + error);
-  }).then(function(service2) {
-    return service2.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
-  }).then(function(characteristic) {
-        var rgb = new Uint8Array([
-    	    44,
-    	    44,
-    	    23]
-          );
-     return characteristic.writeValue(rgb);
-  })
-
+  });
 }
 
 </script>
