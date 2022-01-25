@@ -93,7 +93,7 @@ function connect() {
         connected = true;
         //window.term_.io.println('\r\n' + bleDevice.name + ' Connected.');
         console.log(bleDevice.name + ' Connected. ');
-        nusSendString('DD#');
+        //nusSendString('DD#');
         setConnButtonState(true);
     })
     .catch(error => {
@@ -167,7 +167,7 @@ function sendNextChunk(a) {
 }
  
 function getDate() {
- 
+ nusSendString('DD#');
 }
 
 
