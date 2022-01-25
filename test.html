@@ -137,7 +137,8 @@ function handleNotifications(event) {
     for (let i = 0; i < value.byteLength; i++) {
         str += String.fromCharCode(value.getUint8(i));
     }
-    window.term_.io.print(str);
+    //window.term_.io.print(str);
+    console.log(str);
 }
 
 function nusSendString(s) {
