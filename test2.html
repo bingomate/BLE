@@ -11,7 +11,7 @@ function connect() {
         acceptAllDevices: true
   };
   var busy = false;
-  var gatt, service;
+  var gatt, service, service2;
   // Bring up the Web Bluetooth Device Chooser
   navigator.bluetooth.requestDevice(options).then(function(device) {
     console.log('Device: ' + JSON.stringify(device));
@@ -40,8 +40,8 @@ function connect() {
 
   }).catch(function(error) {
     console.log("Something went wrong. " + error);
-  }).then(function(service) {
-    return service.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+  }).then(function(service2) {
+    return service2.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
   }).then(function(characteristic) {
         var rgb = new Uint8Array([
     	    44,
