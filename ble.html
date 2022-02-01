@@ -6,13 +6,15 @@
   <hr></hr>
  <button id="clientConnectButton" onclick="connect()">Connect</button>
   <h3>Commission Lockbox</h3>
+  <p>This will set the lockbox ID to HSPCB003 and the crypto key to 12345678<p>
   <hr></hr>
-<input type='submit' name="submit" value="Post Form" />
+<button onclick="nusSendString('HSPCB00312345678#')">Get Date</button>
 <h3>Get Date - CMD# or DD#</h3>
 <hr></hr>
 <button onclick="nusSendString('CMD#')">Get Date</button>
-<h3>Set Date - DS<YYYYMMDDHHMMSS>#</h3>
+<h3>Set Date - DSYYYYMMDDHHMMSS#</h3>
  <h3></h3>
+<hr></hr>
  <button onclick="nusSendString('DS' + formatDate() + '#' )">Set Date</button>
 <script>
 'use strict';
