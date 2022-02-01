@@ -2,10 +2,17 @@
  <head>
  </head>
  <body>
+  <h3>Connect to Lockbox</h3>
+  <hr></hr>
+ <button id="clientConnectButton" onclick="connect()">Connect</button>
   <h3>Commission Lockbox</h3>
   <hr></hr>
-<button id="clientConnectButton" onclick="connect()">Connect</button>
+<h3>Get Date - CMD# or DD#</h3>
+<hr></hr>
 <button onclick="nusSendString('CMD#')">Get Date</button>
+<h3>Set Date - DS<YYYYMMDDHHMMSS>#</h3>
+ <h3></h3>
+ <button onclick="nusSendString('DS#')">Set Date</button>
 <script>
 'use strict';
 
