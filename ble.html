@@ -13,7 +13,7 @@
 <button onclick="nusSendString('CMD#')">Get Date</button>
 <h3>Set Date - DS<YYYYMMDDHHMMSS>#</h3>
  <h3></h3>
- <button onclick="nusSendString('DS#')">Set Date</button>
+ <button onclick="nusSendString('DS' + formatDate() + '#' )">Set Date</button>
 <script>
 'use strict';
 
@@ -169,6 +169,12 @@ function sendNextChunk(a) {
               sendNextChunk(a.slice(MTU));
           }
       });
+}
+ 
+function formatDate() {
+ const d = new Date();
+ const dateString = d.toISOString().replace('T','').replaceAll('-','').replaceAll(':', '').slice(0,-5);
+ return dateString;
 }
  
 </script>
