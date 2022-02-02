@@ -15,15 +15,18 @@
 <h3>Set Date - DSYYYYMMDDHHMMSS#</h3>
 <hr></hr>
  <button onclick="nusSendString('DS' + formatDate() + '#' )">Set Date</button>
+<h3>Date Check - DCYYYYMMDDHHMMSS#</h3>
+<hr></hr>
+ <button onclick="nusSendString('DS' + formatDate() + '#' )">Date Check</button>
 <h3>Test Solenoids - TS1# or TS2#</h3>
 <hr></hr>
  <button onclick="nusSendString('TS1#')">Test Solenoid 1</button>
  <button onclick="nusSendString('TS2#')">Test Solenoid 2</button>
 <h3>Other Commands</h3>
+<button onclick="nusSendString('DH#')">Date History</button>
+<button onclick="nusSendString('PD#')">Display Parameters</button>
 <hr></hr>
-<form>
- <input type="text" name="custom" id="custom" onsubmit="return false"><br>
-  <button onclick="customCommand()">Send</button>
+
 </form>
 
 
@@ -190,10 +193,7 @@ function formatDate() {
    return dateString;
 }
  
-function customCommand() {
-   var custom = document.getElementById('custom').value;
-   nusSendString(custom); 
-}
+
  
  
  
