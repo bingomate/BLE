@@ -19,6 +19,15 @@
 <hr></hr>
  <button onclick="nusSendString('TS1#')">Test Solenoid 1</button>
  <button onclick="nusSendString('TS2#')">Test Solenoid 2</button>
+<h3>Other Commands</h3>
+<hr></hr>
+<form name="custom" id="custom">
+    <input type="text" name="command" id="command">
+    <input type="submit">
+</form>
+document.getElementById("custom").onsubmit = function() {
+     nusSendString(document.getElementById("command").value);
+ }
 <script>
 'use strict';
 
