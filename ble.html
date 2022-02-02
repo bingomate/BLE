@@ -25,9 +25,7 @@
     <input type="text" name="command" id="command">
     <input type="submit">
 </form>
-document.getElementById("custom").onsubmit = function() {
-     nusSendString(document.getElementById("command").value);
- }
+
 <script>
 'use strict';
 
@@ -186,10 +184,14 @@ function sendNextChunk(a) {
 }
  
 function formatDate() {
- const d = new Date();
- const dateString = d.toISOString().replace('T','').replaceAll('-','').replaceAll(':', '').slice(0,-5);
- return dateString;
+   const d = new Date();
+   const dateString = d.toISOString().replace('T','').replaceAll('-','').replaceAll(':', '').slice(0,-5);
+   return dateString;
 }
+ 
+ document.getElementById("custom").onsubmit = function() {
+     nusSendString(document.getElementById("command").value);
+ }
  
 </script>
 </body>
