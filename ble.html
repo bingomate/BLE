@@ -21,10 +21,11 @@
  <button onclick="nusSendString('TS2#')">Test Solenoid 2</button>
 <h3>Other Commands</h3>
 <hr></hr>
-<form name="custom" id="custom" onsubmit="nusSendString(); return false">
-    <input type="text" name="command" id="command">
-    <input type="submit">
+<form>
+ <input type="text" name="custom" id="custom"><br>
+  <button onclick="customCommand()">Send</button>
 </form>
+
 
 <script>
 'use strict';
@@ -189,9 +190,12 @@ function formatDate() {
    return dateString;
 }
  
- document.getElementById("custom").onsubmit = function() {
-     nusSendString(document.getElementById("command").value);
- }
+function customCommand() {
+   var custom = document.getElementById('custom').value;
+   nusSendString(custom); 
+}
+ 
+ 
  
 </script>
 </body>
